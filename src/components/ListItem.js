@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import { windowWidth } from '../utils/Dimensions';
+import { windowsWidth } from '../utils/Dimensions';
 
 export default function ListItem({photo, title, subTitle, isFree, price, onPress}) {
   return (
@@ -15,11 +15,11 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
           source={photo}
           style={{width: 55, height: 55, borderRadius: 10, marginRight: 8}}
         />
-        <View style={{width: windowWidth - 220}}>
+        <View style={{width: windowsWidth - 220}}>
           <Text
             style={{
               color: '#333',
-              fontFamily: 'Roboto-Medium',
+              //fontFamily: 'Roboto-Medium',
               fontSize: 14,
             }}>
             {subTitle}
@@ -28,7 +28,7 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
             numberOfLines={1}
             style={{
               color: '#333',
-              fontFamily: 'Roboto-Medium',
+              //fontFamily: 'Roboto-Medium',
               fontSize: 14,
               textTransform: 'uppercase',
             }}>
@@ -46,7 +46,7 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
         <Text style={{
           color: '#fff',
           textAlign: 'center',
-          fontFamily: 'Roboto-Medium',
+          //fontFamily: 'Roboto-Medium',
           fontSize: 14,
         }}>
           {isFree == 'Yes' && 'Play'}

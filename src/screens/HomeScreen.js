@@ -6,13 +6,12 @@ import BannerSlider from '../components/BannerSlider'
 import Carousel from 'react-native-reanimated-carousel'
 import 'react-native-reanimated'
 import {freeGames, paidGames, sliderData} from '../model/data'
-import {windowWidth, windowsHeigth} from '../utils/Dimensions'
-//import CustomSwitch from '../components/CustomSwitch'
-//import ListItem from '../components/ListItem';
+import {windowsWidth, windowsHeigth} from '../utils/Dimensions'
+import 'react-native-gesture-handler'
+import CustomSwitch from '../components/CustomSwitch'
+import ListItem from '../components/ListItem';
 
 export default function HomeScreen() {
-  console.log('windowWidth ' + windowWidth);
-  console.log('windowWidth ' + windowWidth);
   const [gamesTab, setGamesTab] = useState(1);
 
   const renderBanner = ({item, index}) => {
@@ -42,47 +41,37 @@ export default function HomeScreen() {
           <TextInput style={styles.search} placeholder='Search'/>
         </View>
         <View style={styles.touchview}>          
-          <Text>Upcoming Games</Text>
+          <Text style={styles.texto}>Upcoming Games</Text>
           <TouchableOpacity onPress={() => {}}>
             <Text style={styles.seeall}>See all</Text>
           </TouchableOpacity>
-        </View>
-        <Carousel
-          ref={c => {
-            this._carousel = c;
-          }}
-          loop={true}
-          width={300}
-          height={windowsHeigth}
-          //autoPlay={true}
-          data={sliderData}
-          scrollAnimationDuration={1000}
-          renderItem={renderBanner}
-          windowSize={1}
-          sliderWidth={ windowWidth - 40}
-          itemWidth={300}
-          //slideStyle={{ width : windowWidth }}
-          /* data={sliderData}
-          renderItem={renderBanner}
-          //sliderWidth={windowWidth - 40}
-          itemWidth={300}
-          windowSize={1}
-          loop={true}
-          sliderWidth={ windowWidth }          
-          slideStyle={{ width : windowWidth }}*/
-          inactiveSlideOpacity={ 1 }
-          inactiveSlideScale={ 1 }
-          inactiveSlideShift={0} 
-        />
+        </View >
+          <Carousel                                   
+              mode='parallax'
+              modeConfig={{
+                parallaxScrollingScale: 0.95,
+                parallaxScrollingOffset: 100,
+              }} 
+              autoPlayInterval={2000}
+              //loop={true}
+              width={windowsWidth}
+              height={windowsWidth - 270}
+              autoPlay={true}                  
+              data={sliderData}                
+              scrollAnimationDuration={1000}                  
+              renderItem={renderBanner}
+              sliderWidth={ windowsWidth }
+          />
         <View>
-          {/* <CustomSwitch 
+          <CustomSwitch 
             selectionMode={1}
             option1="Free to play"
             option2="Paid games"
             onSelectSwitch={onSelectSwitch}
-          /> */}
+          />
         </View>
-        {/* {gamesTab == 1 &&
+        <View style={{ marginTop:20 }}>
+        {gamesTab == 1 &&
           freeGames.map(item => (
             <ListItem
               key={item.id}
@@ -114,7 +103,8 @@ export default function HomeScreen() {
                 })
               }
             />
-          ))} */}
+          ))}
+        </View>          
       </ScrollView>  
     </SafeAreaView>
   )

@@ -16,6 +16,7 @@ import HomeScreen from './src/screens/HomeScreen'
 
 const Main = ({navigation}) => { 
   return (
+    
     <SafeAreaView style={styles.container}>
       <View style={{marginTop:50}}>
         <Text style={styles.text}>Comex OnLine</Text>        
