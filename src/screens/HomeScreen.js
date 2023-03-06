@@ -11,7 +11,7 @@ import 'react-native-gesture-handler'
 import CustomSwitch from '../components/CustomSwitch'
 import ListItem from '../components/ListItem';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const [gamesTab, setGamesTab] = useState(1);
 
   const renderBanner = ({item, index}) => {
@@ -22,6 +22,8 @@ export default function HomeScreen() {
     setGamesTab(value);
   };
 
+  
+
   return (
     <SafeAreaView style={styles.areasegura}>
       <ScrollView style={styles.scrollvie}>
@@ -29,12 +31,14 @@ export default function HomeScreen() {
           <Text style={styles.texto}>
             Hola, Nombre de Usuario
           </Text>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <ImageBackground             
             source={require('../../assets/images/user-profile.jpg')}            
             style={styles.imagen}
             imageStyle={{ borderRadius:25 }}          
           >
           </ImageBackground>          
+          </TouchableOpacity>
         </View>
         <View style={styles.searchview}>
           <Feather size={20} name="search" style={styles.feather}></Feather>
@@ -99,6 +103,7 @@ export default function HomeScreen() {
               onPress={() =>
                 navigation.navigate('GameDetails', {
                   title: item.title,
+                  subtitle:item.subtitle,
                   id: item.id,
                 })
               }

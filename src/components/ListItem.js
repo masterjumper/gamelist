@@ -20,9 +20,11 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
             style={{
               color: '#333',
               //fontFamily: 'Roboto-Medium',
-              fontSize: 14,
+              fontSize: 14,              
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
             }}>
-            {subTitle}
+            {title}
           </Text>
           <Text
             numberOfLines={1}
@@ -30,9 +32,9 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
               color: '#333',
               //fontFamily: 'Roboto-Medium',
               fontSize: 14,
-              textTransform: 'uppercase',
+              
             }}>
-            {title}
+            {subTitle}
           </Text>
         </View>
       </View>
