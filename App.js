@@ -14,8 +14,8 @@ import 'react-native-gesture-handler';
 function App() {
   return (
     <NavigationContainer>
-      <AppStack />
-      {/* <AuthStack />  */} 
+      {/* <AppStack /> */}
+      <AuthStack />
     </NavigationContainer>
   );
 }

@@ -25,19 +25,15 @@ const HomeStack = () => {
           name="GameDetails"
           component={GameDetailsScreen}
           options={({route}) => ({
-            title: route.params?.title,
-            subtitle:route.params?.subtitle,
+            title: route.params?.title            
           })}
         />
       </Stack.Navigator>
     );
   };
 
-const getTabBarVisibility = route => {
-    // console.log(route);
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
-    // console.log(routeName);
-
+const getTabBarVisibility = route => {    
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';    
     if( routeName == 'GameDetails' ) {
         return 'none';
     }
