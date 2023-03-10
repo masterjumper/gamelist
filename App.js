@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import AuthStack from './src/navigation/AuthStack';
-import AppStack from './src/navigation/AppStack';
+
 import 'react-native-gesture-handler';
-/* function Home() {
+import {AuthProvider} from './src/context/AuthContext'
+import AppNav from './src/navigation/AppNav';
+/* function Home() {  
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
@@ -13,10 +13,9 @@ import 'react-native-gesture-handler';
 
 function App() {
   return (
-    <NavigationContainer>
-      {/* <AppStack /> */}
-      <AuthStack />
-    </NavigationContainer>
+    <AuthProvider>
+      <AppNav />
+    </AuthProvider>
   );
 }
 

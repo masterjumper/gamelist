@@ -1,5 +1,6 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView,
+   TextInput, TouchableOpacity } from 'react-native'
+import React,{useContext} from 'react'
 import LoginSVG from '../../assets/images/misc/login.svg'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -8,10 +9,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoogleSVG from '../../assets/images/misc/google.svg'
 import FacebookSVG from '../../assets/images/misc/facebook.svg'
 import TwitterSVG from '../../assets/images/misc/twitter.svg'
-
+import CustomButton from '../components/CustomButton';
+import InputField from '../components/InputField';
+import AuthContext from '../context/AuthContext';
 
 
 const LoginScreen = ({navigation}) => {
+  const {login}=useContext(AuthContext)
   return (
     <SafeAreaView 
     style={
@@ -34,64 +38,35 @@ const LoginScreen = ({navigation}) => {
             }}
           >Login
           </Text>
-        <View 
-          style = {{ flexDirection:'row',
-           borderBottomColor:'#ccc',
-           borderBottomWidth:1,
-           paddingBottom:8,
-           marginBottom:25}}>
+          
+          <InputField
+            label={'Email'}
+            icon={
             <MaterialIcon 
-            name='alternate-email'
-            size={20}
-            color='#666'
-            style={{ marginRight:5 }}
-            />
-            <TextInput 
-            placeholder='Email Id'
-            style={{              
-              flex:1,
-              paddingVertical:0}}
+              name='alternate-email'
+              size={20}
+              color='#666'
+              style={{ marginRight:5 }}
+            />}
             keyboardType='email-address'
-            />
-        </View>   
-        <View 
-          style = {{ flexDirection:'row',
-           borderBottomColor:'#ccc',
-           borderBottomWidth:1,
-           paddingBottom:8,
-           marginBottom:25}}>
-            <Ionicons 
-            name='ios-lock-closed-outline'
-            size={20}
-            color='#666'
-            style={{ marginRight:5 }}
-            />
-            <TextInput 
-            placeholder='Password'
-            style={{              
-              flex:1,
-              paddingVertical:0}}
-              secureTextEntry={true}                          
-            />
-            <TouchableOpacity onPress={()=>{}}>
-              <Text style={{ color:'#AD40AF', 
-            fontWeight:'700'
-              }}>Forgot?</Text>
-            </TouchableOpacity>
-        </View>  
-        <TouchableOpacity 
+          /> 
+           <InputField
+              label={'Password'}
+              icon={
+                <Ionicons
+                  name="ios-lock-closed-outline"
+                  size={20}
+                  color="#666"
+                  style={{ marginRight: 5 }}
+                />}
+                inputType="password"
+                fieldButtonLabel={'Forgot?'}
+                fieldButtonfuction={()=>{}}
+          />         
+        <CustomButton
+          label={'Login'}
           onPress={()=>{}}
-          style={{backgroundColor:'#AD40AF',
-                  padding:20,
-                  borderRadius:10,
-                  marginBottom:30}}
-        >
-        <Text style={{
-            textAlign:'center',
-            fontWeight:'700',
-            fontSize:16,
-            color:'#fff'}}>Login</Text>
-        </TouchableOpacity>
+        />
         <Text 
           style={{
             textAlign:'center', 
