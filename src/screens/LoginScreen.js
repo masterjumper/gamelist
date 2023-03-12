@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView,
    TextInput, TouchableOpacity } from 'react-native'
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
 import LoginSVG from '../../assets/images/misc/login.svg'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,7 +15,12 @@ import AuthContext from '../context/AuthContext';
 
 
 const LoginScreen = ({navigation}) => {
+  
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+
   const {login}=useContext(AuthContext)
+  
   return (
     <SafeAreaView 
     style={
@@ -48,6 +53,8 @@ const LoginScreen = ({navigation}) => {
               color='#666'
               style={{ marginRight:5 }}
             />}
+            value={email}
+            onChangeText={text=>setEmail(text)}
             keyboardType='email-address'
           /> 
            <InputField
@@ -59,13 +66,15 @@ const LoginScreen = ({navigation}) => {
                   color="#666"
                   style={{ marginRight: 5 }}
                 />}
+                value={password}
                 inputType="password"
+                onChangeText={text=>setPassword(text)}
                 fieldButtonLabel={'Forgot?'}
                 fieldButtonfuction={()=>{}}
           />         
         <CustomButton
           label={'Login'}
-          onPress={()=>{}}
+          onPress={()=>{login(email, password)}}
         />
         <Text 
           style={{

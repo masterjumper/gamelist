@@ -1,6 +1,6 @@
 import { ImageBackground, SafeAreaView, ScrollView, 
   StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import Feather from 'react-native-vector-icons/Feather'
 import BannerSlider from '../components/BannerSlider'
 import Carousel from 'react-native-reanimated-carousel'
@@ -22,14 +22,14 @@ export default function HomeScreen({navigation}) {
     setGamesTab(value);
   };
 
+  const {userInfo} = useContext(AuthContext)
   
-
   return (
     <SafeAreaView style={styles.areasegura}>
       <ScrollView style={styles.scrollvie}>
         <View style={styles.container}>
           <Text style={styles.texto}>
-            Hola, Nombre de Usuario
+            Hola, {userInfo.nombre} {userInfo.apellido}
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <ImageBackground             
